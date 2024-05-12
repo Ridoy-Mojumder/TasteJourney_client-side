@@ -1,7 +1,8 @@
-import { GoogleAuthProvider,GithubAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
+import axios from "axios";
 
 
 export const AuthContext = createContext(null);
@@ -29,13 +30,13 @@ const AuthProvider = ({ children }) => {
         setIsSignIn(true)
         return signInWithEmailAndPassword(auth, email, password);
     }
-    const signInWithGoogle = () =>{
+    const signInWithGoogle = () => {
         setLoadingState(true);
         return signInWithPopup(auth, googleProvider);
     }
 
 
-    const signInWithGithub = () =>{
+    const signInWithGithub = () => {
         setLoadingState(true)
         return signInWithPopup(auth, githubProvider)
     }
@@ -48,18 +49,43 @@ const AuthProvider = ({ children }) => {
 
 
     useEffect(() => {
-
+        // Subscribe to authentication state changes
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            // Extract user email from currentUser or use default if currentUser is null
+            const userEmail = currentUser?.email || user.email;
+            const loggedUserEmail = { email: userEmail };
+    
+            // Update user state and set loading state to false
             setUser(currentUser);
-            console.log('Current User Found:', currentUser);
-            setLoadingState(false)
+            setLoadingState(false);
+    
+            // If currentUser exists, send a POST request to generate JWT
+            if (currentUser) {
+                axios.post('http://localhost:5000/jwt', loggedUserEmail, { withCredentials: true })
+                    .then(res => {
+                        console.log('Token response:', res.data);
+                    })
+                    .catch(error => {
+                        console.error('Error generating JWT:', error);
+                    });
+            } else {
+                // If currentUser doesn't exist, send a POST request to logout
+                axios.post('http://localhost:5000/logout', loggedUserEmail, { withCredentials: true })
+                    .then(res => {
+                        console.log('Logout response:', res.data);
+                    })
+                    .catch(error => {
+                        console.error('Error logging out:', error);
+                    });
+            }
         });
-
-
+    
+        // Unsubscribe from authentication state changes when component unmounts
         return () => {
             unSubscribe();
         };
-    }, []);
+    }, [user]);
+    
 
 
     const authInfo = {
