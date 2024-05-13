@@ -1,6 +1,7 @@
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import Lottie from 'react-lottie';
 import animationData from './ContacctUs.json';
+import 'animate.css';
 
 const ContactUs = () => {
     const defaultOptions = {
@@ -13,8 +14,8 @@ const ContactUs = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 py-12 px-4">
-            <div className="max-w-6xl mx-auto">
+        <div className="min-h-screen bg-gray-100 py-12 px-4  animate__zoomIn">
+            <div className="max-w-6xl mx-auto animate__zoomIn">
                 <div className="flex flex-col md:flex-row items-center justify-around">
                     <div className="mb-6 md:mb-0">
                         <Lottie options={defaultOptions} className="h-auto w-auto" />

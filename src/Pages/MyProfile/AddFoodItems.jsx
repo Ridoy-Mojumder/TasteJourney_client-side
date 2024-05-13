@@ -9,8 +9,8 @@ const AddFoodItems = () => {
         food_name: '',
         image: null,
         category: '',
-        quantity: '',
-        price: '',
+        quantity: 0,
+        price: 0,
         name: user ? user.displayName : '',
         email: user ? user.email : '',
         food_origin: '',
@@ -35,11 +35,12 @@ const AddFoodItems = () => {
         const food_image = foodData.photoURL;
         const food_category = foodData.category;
         const quantity = foodData.quantity;
+        const price = foodData.price;
         const name = foodData.name;
         const email = foodData.email;
         const food_origin = foodData.food_origin;
         const description = foodData.description;
-        const newArtAndCraft = { food_name, food_image, food_category, quantity, "added_by": { "name":name, "email":email }, food_origin, description }
+        const newArtAndCraft = { food_name, food_image, food_category, quantity,price, "added_by": { "name":name, "email":email }, food_origin, description }
         console.log(newArtAndCraft)
 
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import 'animate.css';
 
 // CarouselMain Component
 export const CarouselMain = () => {
@@ -37,7 +38,7 @@ export const CarouselMain = () => {
 // Carousel2 Component
 export const Carousel2 = () => {
     return (
-        <div className=" mx-auto h-[540px] lg:h-[670px] px-3 lg:px-10 flex flex-col lg:flex-row items-center justify-center overflow-hidden gap-5 lg:gap-10 relative">
+        <div className=" mx-auto h-[540px] lg:h-[670px] px-3 lg:px-10 flex flex-col lg:flex-row items-center justify-center overflow-hidden gap-5 lg:gap-10 relative animate__animated animate__backInLeft">
             <div className="bg-[#f3f9fc] w-full absolute left-0 h-[540px] lg:h-[670px] -z-40"></div>
             <div className="w-2/3 lg:w-1/3 text-center lg:text-left space-y-2 lg:space-y-5 py-5">
                 <h1 className="text-lg md:text-2xl lg:text-[40px] font-bold">50+ delectable dishes crafted</h1>

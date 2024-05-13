@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
+import 'animate.css';
 
 const AllFoodSection = () => {
     const { user } = useContext(AuthContext);
@@ -40,12 +41,12 @@ const AllFoodSection = () => {
 
             ) :
                 (
-                    <div className="food-card-container my-10">
-                         <h1 className="text-3xl font-semibold text-[#52c9af] my-10 text-center">Our Top Food items</h1>
+                    <div className="food-card-container my-10 animate__fadeInUp  animate__animated animate__bounceInRight">
+                         <h1 className="text-3xl font-semibold text-[#52c9af] my-10 text-center animate__animated animate__backInRight">Our Top Food items</h1>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {
                                 (showAllData ? allFoods : allFoods.slice(0, 6)).map((food, index) => (
-                                    <div key={index} className="bg-white rounded-lg shadow-md p-6 font-dancing">
+                                    <div key={index} className="bg-white rounded-lg shadow-md p-6 font-dancing  animate__animated animate__bounceInRight">
                                         <img src={food.food_image} alt={food.food_name} className="w-full h-60 object-cover mb-4 rounded-lg" />
                                         <h2 className="text-lg font-semibold text-gray-800 mb-2">{food.food_name}</h2>
                                         <p className="text-sm text-gray-600 mb-4">Food Category: {food.food_category}</p>
