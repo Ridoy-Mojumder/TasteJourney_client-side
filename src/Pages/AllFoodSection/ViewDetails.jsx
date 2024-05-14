@@ -3,11 +3,11 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const ViewDetails = () => {
     const loadedData = useLoaderData();
-    const {_id ,food_name, food_image, food_category, quantity, price, added_by, food_origin, description,orderCount } = loadedData;
+    const { _id, food_name, food_image, food_category, quantity, price, added_by, food_origin, description, orderCount } = loadedData;
     const { name, email } = added_by;
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white shadow-lg rounded-lg overflow-hidden p-8 m-8 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white shadow-lg rounded-lg overflow-hidden p-8 m-8">
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>View Details Page</title>
@@ -31,12 +31,13 @@ const ViewDetails = () => {
                 <p className="text-gray-600 text-lg mb-2"><span className="font-bold">Origin:</span> {food_origin}</p>
                 <p className="text-gray-600 text-lg mb-4">{description}</p>
                 <Link to={`/purchesPage/${_id}`} className="w-full">
-                    <button className="bg-[#45bfca] text-white px-6 py-3 rounded-lg shadow-md hover:bg-[#429b93] transition-colors duration-200 ease-in-out">
+                    <button className="bg-[#45bfca] text-white px-6 py-3 rounded-lg shadow-md hover:bg-[#429b93] transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#45bfca]">
                         Purchase
                     </button>
                 </Link>
             </div>
         </div>
+
     );
 };
 
