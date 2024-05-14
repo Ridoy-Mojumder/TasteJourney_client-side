@@ -60,7 +60,7 @@ const PurchasePage = () => {
 
 
     return (
-        <div className="flex justify-around items-center p-20 bg-gray-100 min-h-screen">
+        <div className="md:flex justify-around items-center md:p-20 bg-gray-100 min-h-screen">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
                 <h1 className="text-2xl font-bold text-center mb-6">Purchase Food</h1>
                 <form onSubmit={handlePurchase} className="space-y-4">
@@ -141,7 +141,7 @@ const PurchasePage = () => {
                 </form>
                 <ToastContainer />
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-lg max-w-xs w-full">
+            <div className="bg-white m-8 p-8 rounded-lg shadow-lg max-w-xs w-full">
                 <h1 className="text-3xl">Available Quantity: {quantity}</h1>
                 <h1 className="text-3xl">Order Count: {orderCount ? orderCount : 0}</h1>
             </div>

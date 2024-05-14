@@ -1,22 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-import Lottie from "react-lottie";
-import animationData from './feedback.json'
 import Swal from "sweetalert2";
 
 const Gallery = () => {
     const { user } = useContext(AuthContext);
     const [galleryAllData, setGalleryAllData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice",
-        },
-    };
+    
 
 
     const handleFeedback = (e, _id) => {
@@ -109,8 +100,8 @@ const Gallery = () => {
                     <div className="grid grid-cols-1 ">
 
                         <div>
-                            <div className="mb-6 md:mb-0 flex-shrink-0 relative">
-                                <Lottie options={defaultOptions} height={500} width={450} />
+                            <div className="mb-6 md:mb-0 flex-shrink-0 relative w-[500px] h-[600px]">
+                                
                             </div>
                         </div>
                         <div className="w-auto absolute flex justify-start items-start p-10 shadow-2xl rounded-xl  m-2">
@@ -188,8 +179,7 @@ const Gallery = () => {
                                     <div className="absolute inset-0 flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                                         <div className="bg-black bg-opacity-75 p-4 rounded-md text-white text-center">
                                             <p className="text-lg font-semibold">User Name: {galleryData.name}</p>
-                                            <p className="text-lg font-semibold">User Email: {galleryData.email}</p>
-                                            <p className="text-lg font-semibold">User Email: {galleryData.feedback}</p>
+                                            <p className="text-lg font-semibold">Feedback: {galleryData.feedback}</p>
                                         </div>
                                     </div>
                                     <p>FeedBack: {galleryData.feedback}</p>

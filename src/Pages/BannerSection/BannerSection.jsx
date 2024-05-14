@@ -18,7 +18,7 @@ export const CarouselMain = () => {
     };
 
     return (
-        <div className="sm:w-1/2 h-[540px] md:h-[670px] flex items-center relative overflow-hidden">
+        <div className="md:w-1/2 h-[540px] md:h-[670px] flex items-center relative overflow-hidden">
             <button onClick={nextSlider} className="absolute flex justify-center items-center right-2 top-1/2 bg-white rounded-full z-50 w-6 h-6 md:w-8 md:h-8">
                 <svg viewBox="0 0 1024 1024" className="w-4 h-4 md:w-6 md:h-6 icon" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(180)">
                     <path fill="#0095FF" d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"></path>
