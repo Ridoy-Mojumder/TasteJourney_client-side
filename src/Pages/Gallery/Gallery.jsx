@@ -99,18 +99,18 @@ const Gallery = () => {
             </form>
             <div className="grid grid-cols-1 p-10">
                 <form className=" flex flex-col text-teal-700" onSubmit={handleFeedback}>
-                    <label htmlFor="feedback" className="font-bold text-2xl mb-2">Your Feedback:</label>
+                    <label htmlFor="feedback" className="font-bold text-xl mb-2">Your Feedback:</label>
                     <textarea
                         id="feedback"
                         name="feedback"
-                        rows="5"
-                        cols="50"
+                        rows="2"
+                        cols="20"
                         className="border border-gray-300 rounded-md px-4 py-2 mb-4 focus:outline-none focus:border-teal-600 w-full"
                         placeholder="Write your feedback here..."
                         required
                     ></textarea>
 
-                    <label htmlFor="photoURL" className="font-bold text-2xl mb-2">Upload an Image:</label>
+                    <label htmlFor="photoURL" className="font-bold text-xl mb-2">Upload an Image:</label>
                     <input
                         type="text"
                         id="photoURL"
@@ -118,7 +118,7 @@ const Gallery = () => {
                         className="border border-gray-300 rounded-md px-4 py-2 mb-4 w-full focus:outline-none focus:border-teal-600"
                         accept="photoURL/*" />
 
-                    <label htmlFor="name" className="font-bold text-2xl mb-2">Your Name:</label>
+                    <label htmlFor="name" className="font-bold text-xl mb-2">Your Name:</label>
                     <input
                         type="text"
                         id="name"
@@ -128,7 +128,7 @@ const Gallery = () => {
                         placeholder="Enter your name..."
                         readOnly />
 
-                    <label htmlFor="email" className="font-bold text-2xl mb-2">Your Email:</label                    >
+                    <label htmlFor="email" className="font-bold text-xl mb-2">Your Email:</label                    >
                         <input
                             type="email"
                             id="email"
@@ -156,7 +156,7 @@ const Gallery = () => {
             <h1 className="text-5xl font-bold text-teal-600 my-10 text-center">Here are all User Feedback</h1>
 
             {/* Displaying feedback cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-5">
                 {galleryAllData.map((galleryData, index) => (
                     <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
                         <div className="relative group">
