@@ -2,6 +2,7 @@
 import { NavLink } from "react-router-dom";
 import AddFoodItems from "./AddFoodItems";
 import MyAddedItems from "./MyAddedItems";
+import MyOrderdItems from "./MyOrderdItems";
 
 
 const MyProfile = () => {
@@ -52,6 +53,7 @@ const MyProfile = () => {
                         My ordered food items
                         <span className="absolute left-1/2 transform -translate-x-1/2 h-px w-96 -bottom-4 bg-[#52c9af]"></span>
                     </h1>
+                    <MyOrderdItems></MyOrderdItems>
                 </div>
             </div>
         </div>

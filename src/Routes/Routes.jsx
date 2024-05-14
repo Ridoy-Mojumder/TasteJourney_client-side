@@ -12,6 +12,8 @@ import MyProfile from "../Pages/MyProfile/MyProfile";
 import Gallery from "../Pages/Gallery/Gallery";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import PurchesPage from "../Pages/PurchesPage/PurchesPage";
+import UpdateItems from "../Pages/MyProfile/UpdateItems";
+import UpdateMyOrderedData from "../Pages/MyProfile/UpdateMyOderderdData";
 
 export const router = createBrowserRouter([
     {
@@ -61,6 +63,16 @@ export const router = createBrowserRouter([
           element: <ViewDetails />,
           loader:  ({ params }) => fetch(`http://localhost:5000/TasteJourneyAllFood/${params.id}`)
         },
+        {
+          path: "/updateItems/:id",
+          element: <UpdateItems />,
+          loader:  ({ params }) => fetch(`http://localhost:5000/TasteJourneyAllFood/${params.id}`)
+        },
+        {
+          path: '/updateMyOrderItems/:id',
+          element:<UpdateMyOrderedData/>,
+          loader: ({ params }) => fetch(`http://localhost:5000/purchase/${params.id}`)
+        }
       ],
     },
   ]);

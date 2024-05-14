@@ -14,7 +14,7 @@ const Gallery = () => {
         autoplay: true,
         animationData: animationData,
         rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice",
+        preserveAspectRatio: "xMidYMid slice",
         },
     };
 
@@ -189,6 +189,7 @@ const Gallery = () => {
                                         <div className="bg-black bg-opacity-75 p-4 rounded-md text-white text-center">
                                             <p className="text-lg font-semibold">User Name: {galleryData.name}</p>
                                             <p className="text-lg font-semibold">User Email: {galleryData.email}</p>
+                                            <p className="text-lg font-semibold">User Email: {galleryData.feedback}</p>
                                         </div>
                                     </div>
                                     <p>FeedBack: {galleryData.feedback}</p>

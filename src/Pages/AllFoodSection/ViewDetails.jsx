@@ -2,7 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const ViewDetails = () => {
     const loadedData = useLoaderData();
-    const {_id ,food_name, food_image, food_category, quantity, price, added_by, food_origin, description } = loadedData;
+    const {_id ,food_name, food_image, food_category, quantity, price, added_by, food_origin, description,orderCount } = loadedData;
     const { name, email } = added_by;
 
     return (
@@ -14,6 +14,7 @@ const ViewDetails = () => {
                 <p className="text-gray-600 text-lg mb-2"><span className="font-bold">Category:</span> {food_category}</p>
                 <p className="text-gray-600 text-lg mb-2"><span className="font-bold">Quantity:</span> {quantity}</p>
                 <p className="text-gray-600 text-lg mb-2"><span className="font-bold">Price:</span> {price}</p>
+                <p className="text-gray-600 text-lg mb-2"><span className="font-bold">OrderCount:</span> {orderCount}</p>
                 <div className="flex items-center mb-2">
                     <span className="font-bold mr-2">Added By:</span><br />
                     <div className="flex flex-col">
