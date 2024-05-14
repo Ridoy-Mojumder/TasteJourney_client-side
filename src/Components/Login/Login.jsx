@@ -2,11 +2,12 @@ import { useContext, useState } from 'react';
 import Lottie from 'react-lottie';
 import animationData from './Login.json';
 import animationData2 from './google.json';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
+import axios from 'axios';
 
 const Login = () => {
     const defaultOptions = {
@@ -37,6 +38,8 @@ const Login = () => {
     const [password, setPassword] = useState(false);
     const navigate = useNavigate();
     const [passwordShow, setPasswordShow] = useState(false);
+    const location = useLocation()
+    const { user } = useContext(AuthContext)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -59,7 +62,13 @@ const Login = () => {
             .then(() => {
                 Swal.fire("LogIn Successfully");
                 setFormData({ email: '', password: '' });
-                navigate("/");
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.success) {
+                            navigate(location?.state ? location?.state : "/");
+                        }
+                    })
             })
             .catch(error => {
                 console.error(error);
@@ -106,7 +115,7 @@ const Login = () => {
                         id="email"
                         placeholder="Email"
                         value={formData.name}
-                        name= "email"
+                        name="email"
                         onChange={handleChange}
                         className="p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#70abb1]"
                         required

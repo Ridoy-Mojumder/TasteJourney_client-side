@@ -71,6 +71,9 @@ const PurchasePage = () => {
             <div className="md:flex justify-around items-center md:p-20 bg-gray-100 min-h-screen">
                 <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
                     <h1 className="text-2xl font-bold text-center mb-6">Purchase Food</h1>
+                    {
+                        quantity === 0 && <p className="text-red-600 font-bold text-xl"> you can not buy this</p>
+                    }
                     <form onSubmit={handlePurchase} className="space-y-4">
                         <div>
                             <label className="block text-gray-700 text-sm font-medium mb-2" htmlFor="food_name">Food Name</label>
