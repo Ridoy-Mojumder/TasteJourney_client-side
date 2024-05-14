@@ -38,24 +38,20 @@ const MeetOurMemberAndChef = () => {
 
                 {teamMember && teamMember.length > 0 ? (
                     <div className="flex">
-                        <Marquee pauseOnHover={true} speed={130} >
+                        <Marquee pauseOnHover={true} speed={130} gradient={false} className="bg-white dark:bg-gray-800">
                             {teamMember.map((member, index) => (
-                                <div key={index} className="m-20">
-                                    <div className="max-w-lg p-4 shadow-md dark:bg-gray-300 dark:text-gray-800">
-                                        <div className="flex justify-between pb-4 border-bottom">
-                                            <div className="flex items-center">
-                                                <a rel="noopener noreferrer" href="#" className="mb-0 capitalize dark:text-gray-800">{member.position}</a>
-                                            </div>
-                                        </div>
+                                <div key={index} className="m-10 w-96">
+                                    <div className="max-w-md p-6 shadow-lg rounded-lg bg-white dark:bg-gray-300">
                                         <div className="space-y-4">
-                                            <div className="space-y-2">
-                                                <img src={member.image} alt="" className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500" />
+                                            <img src={member.image} alt={member.name} className="block object-cover object-center w-full rounded-md h-56 shadow-sm dark:bg-gray-500" />
+                                            <div>
+                                                <h3 className="text-lg font-semibold dark:text-gray-900">{member.name}</h3>
+                                                <p className="text-sm text-gray-500 dark:text-gray-700">{member.position}</p>
+                                                <a href="#" className="text-blue-600 hover:text-blue-800 dark:hover:text-blue-400">View Profile</a>
                                             </div>
-                                            <div className="space-y-2">
-                                                <a rel="noopener noreferrer" href="#" className="block">
-                                                    <h3 className="text-xl font-semibold dark:text-violet-600">{member.others.email}</h3>
-                                                    <h3 className="text-xl font-semibold dark:text-violet-600">{member.others.phone}</h3>
-                                                </a>
+                                            <div className="space-y-1">
+                                                <p className="text-md font-medium dark:text-violet-600">{member.others.email}</p>
+                                                <p className="text-md font-medium dark:text-violet-600">{member.others.phone}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -63,11 +59,12 @@ const MeetOurMemberAndChef = () => {
                             ))}
                         </Marquee>
                     </div>
+
                 ) : (
                     <div>No team members found.</div>
                 )}
 
-                
+
             </div>
 
         </>
