@@ -10,7 +10,8 @@ import './PurchasePage.css'
 
 const PurchasePage = () => {
     const loadedData = useLoaderData();
-    const { _id, food_image, quantity, food_name, price, orderCount } = loadedData;
+    const { _id, food_image, quantity, food_name, price, orderCount, added_by } = loadedData;
+    const { email} = added_by;
     const { user } = useContext(AuthContext);
     const [buyingDate, setBuyingDate] = useState("");
 
@@ -35,8 +36,31 @@ const PurchasePage = () => {
         const buyerName = form.buyerName.value;
         const buyerEmail = form.buyerEmail.value;
         const buyingDate = form.buyingDate.value;
-        const newData = { food_name, food_image, quantity, buyerName, buyerEmail, price, buyingDate, }
-        console.log(newData)
+        const newData = { food_name, food_image, quantity, buyerName, buyerEmail, price, buyingDate };
+    
+        // Check if the buyer's email matches the email of the user who added the food
+        if (user.email === email) {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "You can't purchase the food you added",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            return; // Stop execution
+        }
+    
+        if (parseInt(quantity) > parseInt(loadedData.quantity)) {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "You can't buy more than the available quantity",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            return; // Stop execution
+        }
+    
         fetch(`http://localhost:5000/purchase/${_id}`, {
             method: 'POST',
             headers: {
@@ -56,8 +80,10 @@ const PurchasePage = () => {
                         timer: 1500
                     });
                 }
-            })
-    }
+            });
+    };
+    
+    
 
 
 
