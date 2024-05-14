@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import './PurchasePage.css'
 
 const PurchasePage = () => {
     const loadedData = useLoaderData();
@@ -62,7 +63,7 @@ const PurchasePage = () => {
 
     return (
         <>
-           <Helmet>
+            <Helmet>
                 <meta charSet="utf-8" />
                 <title>Purchase Food</title>
                 <link rel="canonical" href="http://mysite.com/example" />
@@ -77,7 +78,7 @@ const PurchasePage = () => {
                                 type="text"
                                 name="food_name"
                                 id="food_name"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                className="input-field"
                                 value={food_name}
                                 readOnly />
                         </div>
@@ -87,7 +88,7 @@ const PurchasePage = () => {
                                 type="text"
                                 name="food_image"
                                 id="food_image"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                className="input-field"
                                 value={food_image}
                                 readOnly />
                         </div>
@@ -97,7 +98,7 @@ const PurchasePage = () => {
                                 type="number"
                                 name="price"
                                 id="price"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                className="input-field"
                                 value={price}
                                 readOnly />
                         </div>
@@ -107,7 +108,7 @@ const PurchasePage = () => {
                                 type="number"
                                 name="quantity"
                                 id="quantity"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                className="input-field"
                                 min="1"
                                 required />
                         </div>
@@ -117,7 +118,9 @@ const PurchasePage = () => {
                                 type="text"
                                 id="buyerName"
                                 name="buyerName"
-                                className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" value={user.displayName} readOnly />
+                                className="input-field"
+                                value={user.displayName}
+                                readOnly />
                         </div>
                         <div>
                             <label className="block text-gray-700 text-sm font-medium mb-2" htmlFor="buyerEmail">Buyer Email</label>
@@ -126,21 +129,22 @@ const PurchasePage = () => {
                                 id="buyerEmail"
                                 name="buyerEmail"
                                 value={user.email}
-                                className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                                className="input-field"
                                 readOnly />
                         </div>
                         <div>
-                            <label className="block text-gray-700 text-sm font-medium mb-2" htmlFor="buyerEmail">Buying Date</label>
+                            <label className="block text-gray-700 text-sm font-medium mb-2" htmlFor="buyingDate">Buying Date</label>
                             <input
                                 type="date"
                                 id="buyingDate"
                                 name="buyingDate"
                                 value={buyingDate}
-                                className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                                className="input-field"
                                 readOnly />
                         </div>
-                        <button type="submit"
-                            className="w-full text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                        <button
+                            type="submit"
+                            className="submit-button"
                             disabled={quantity === 0}
                         >
                             Purchase
@@ -154,6 +158,7 @@ const PurchasePage = () => {
                 </div>
             </div>
         </>
+
     );
 };
 
