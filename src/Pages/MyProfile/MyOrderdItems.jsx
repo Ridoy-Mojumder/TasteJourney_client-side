@@ -28,7 +28,7 @@ const MyOrderdItems = () => {
             });
     }, [user]);
 
-    // Filter myAddedOrder based on the currently logged-in user's email
+
     const filteredOrders = myAddedOrder.filter(order => order.buyerEmail === user.email);
 
     const handleDelete = (_id) => {
@@ -70,38 +70,58 @@ const MyOrderdItems = () => {
 
     return (
         <div className="flex justify-center">
-            <table className="border-collapse border border-gray-500 shadow-lg w-full">
+            <table className="min-w-full leading-normal">
                 <thead>
                     <tr>
-                        <th className="border border-gray-500 px-4 py-2">Food Image</th>
-                        <th className="border border-gray-500 px-4 py-2">Food Name</th>
-                        <th className="border border-gray-500 px-4 py-2">Price</th>
-                        <th className="border border-gray-500 px-4 py-2">Action</th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-xs font-semibold text-gray-600 uppercase tracking-wider text-center">
+                            Food Image
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Food Name
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Price
+                        </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Action
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     {loading && (
                         <tr>
-                            <td colSpan="4" className="text-center py-4">Loading...</td>
+                            <td colSpan="4" className="text-center py-4 text-sm text-gray-900 bg-white">
+                                Loading...
+                            </td>
                         </tr>
                     )}
                     {error && (
                         <tr>
-                            <td colSpan="4" className="text-center py-4">{error}</td>
+                            <td colSpan="4" className="text-center py-4 text-sm text-red-500 bg-white">
+                                {error}
+                            </td>
                         </tr>
                     )}
                     {filteredOrders.map(order => (
-                        <tr key={order._id}>
+                        <tr key={order._id} className="hover:bg-gray-100">
                             {order.buyerEmail === user.email &&
                                 <>
-                                    <td className="border border-gray-500 px-4 py-2 "><img src={order.food_image} alt={order.food_name} className="w-32 h-32" /></td>
-                                    <td className="border border-gray-500 px-4 py-2">{order.food_name}</td>
-                                    <td className="border border-gray-500 px-4 py-2">${order.price}</td>
-                                    <td className="border border-gray-500 px-4 py-2 ">
-                                        <Link to = {`/updateMyOrderItems/${order._id}`}>
-                                            <button className="mr-10">Update</button>
+                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <div className="flex justify-center items-center">
+                                            <img src={order.food_image} alt={order.food_name} className="w-32 h-32 object-cover" />
+                                        </div>
+                                    </td>
+                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {order.food_name}
+                                    </td>
+                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        ${order.price}
+                                    </td>
+                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <Link to={`/updateMyOrderItems/${order._id}`}>
+                                            <button className="text-blue-500 hover:text-blue-800 px-4 py-2 rounded">Update</button>
                                         </Link>
-                                        <button onClick={()=>handleDelete(order._id)}>Delete</button>
+                                        <button onClick={() => handleDelete(order._id)} className="text-red-500 hover:text-red-800 ml-4 px-4 py-2 rounded">Delete</button>
                                     </td>
                                 </>
                             }
@@ -109,6 +129,7 @@ const MyOrderdItems = () => {
                     ))}
                 </tbody>
             </table>
+
         </div>
     );
 };

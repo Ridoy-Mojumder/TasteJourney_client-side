@@ -40,148 +40,148 @@ const AddFoodItems = () => {
         const email = foodData.email;
         const food_origin = foodData.food_origin;
         const description = foodData.description;
-        const newArtAndCraft = { food_name, food_image, food_category, quantity,price, "added_by": { "name":name, "email":email }, food_origin, description }
+        const newArtAndCraft = { food_name, food_image, food_category, quantity, price, "added_by": { "name": name, "email": email }, food_origin, description }
         console.log(newArtAndCraft)
 
 
-        fetch('http://localhost:5000/TasteJourneyAllFood/',{
+        fetch('http://localhost:5000/TasteJourneyAllFood/', {
             method: 'POST',
             headers: {
-                'content-type' : 'application/json'
+                'content-type': 'application/json'
             },
-            body : JSON.stringify(newArtAndCraft)
+            body: JSON.stringify(newArtAndCraft)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.insertedId){
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Art and Craft Added Successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Art and Craft Added Successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     };
     return (
-        <div>
-            <div className="max-w-4xl mx-auto p-5">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Food Name</label>
-                        <input
-                            type="text"
-                            name="food_name"
-                            value={foodData.food_name}
-                            onChange={handleChange}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            required
-                        />
-                    </div>
+        <div className="max-w-4xl mx-auto p-5">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded-lg shadow-md">
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Food Name</label>
+                    <input
+                        type="text"
+                        name="food_name"
+                        value={foodData.food_name}
+                        onChange={handleChange}
+                        className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#52c9af] focus:border-[#52c9af] sm:text-sm"
+                        required
+                    />
+                </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Food Image</label>
-                        <input
-                            type="text"
-                            name="photoURL"
-                            onChange={handleChange}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                    </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Food Image</label>
+                    <input
+                        type="text"
+                        name="photoURL"
+                        onChange={handleChange}
+                        className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#52c9af] focus:border-[#52c9af] sm:text-sm"
+                    />
+                </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Food Category</label>
-                        <input
-                            type="text"
-                            name="category"
-                            value={foodData.category}
-                            onChange={handleChange}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            required
-                        />
-                    </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Food Category</label>
+                    <input
+                        type="text"
+                        name="category"
+                        value={foodData.category}
+                        onChange={handleChange}
+                        className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#52c9af] focus:border-[#52c9af] sm:text-sm"
+                        required
+                    />
+                </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Quantity</label>
-                        <input
-                            type="number"
-                            name="quantity"
-                            value={foodData.quantity}
-                            onChange={handleChange}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            required
-                        />
-                    </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Quantity</label>
+                    <input
+                        type="number"
+                        name="quantity"
+                        value={foodData.quantity}
+                        onChange={handleChange}
+                        className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#52c9af] focus:border-[#52c9af] sm:text-sm"
+                        required
+                    />
+                </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Price</label>
-                        <input
-                            type="number"
-                            name="price"
-                            value={foodData.price}
-                            onChange={handleChange}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            required
-                        />
-                    </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Price</label>
+                    <input
+                        type="number"
+                        name="price"
+                        value={foodData.price}
+                        onChange={handleChange}
+                        className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#52c9af] focus:border-[#52c9af] sm:text-sm"
+                        required
+                    />
+                </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Added By</label>
-                        <input
-                            type="text"
-                            name="name"
-                            value={user.displayName}
-                            readOnly
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 bg-gray-100 rounded-md shadow-sm focus:outline-none sm:text-sm"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Email</label>
-                        <input
-                            type="text"
-                            name="email"
-                            value={user.email}
-                            readOnly
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 bg-gray-100 rounded-md shadow-sm focus:outline-none sm:text-sm"
-                        />
-                    </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Added By</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={user.displayName}
+                        readOnly
+                        className="mt-1 block w-full px-4 py-3 border border-gray-300 bg-gray-100 rounded-lg shadow-sm focus:outline-none sm:text-sm"
+                    />
+                </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Food Origin (Country)</label>
-                        <input
-                            type="text"
-                            name="food_origin"
-                            value={foodData.food_origin}
-                            onChange={handleChange}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            required
-                        />
-                    </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Email</label>
+                    <input
+                        type="text"
+                        name="email"
+                        value={user.email}
+                        readOnly
+                        className="mt-1 block w-full px-4 py-3 border border-gray-300 bg-gray-100 rounded-lg shadow-sm focus:outline-none sm:text-sm"
+                    />
+                </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Description</label>
-                        <textarea
-                            name="description"
-                            value={foodData.description}
-                            onChange={handleChange}
-                            rows="3"
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            placeholder="Short description about the food..."
-                            required
-                        ></textarea>
-                    </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Food Origin (Country)</label>
+                    <input
+                        type="text"
+                        name="food_origin"
+                        value={foodData.food_origin}
+                        onChange={handleChange}
+                        className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#52c9af] focus:border-[#52c9af] sm:text-sm"
+                        required
+                    />
+                </div>
 
-                    <button
-                        type="submit"
-                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Add Item
-                    </button>
-                </form>
-            </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea
+                        name="description"
+                        value={foodData.description}
+                        onChange={handleChange}
+                        rows="4"
+                        className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-[#52c9af] focus:border-[#52c9af] sm:text-sm"
+                        placeholder="Short description about the food..."
+                        required
+                    ></textarea>
+                </div>
+
+                <button
+                    type="submit"
+                    className="w-full py-3 bg-[#52c9af] text-white font-medium rounded-lg shadow-lg hover:bg-[#429b93] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#52c9af] transition duration-300"
+                >
+                    Add Item
+                </button>
+            </form>
         </div>
+
     );
 };
 

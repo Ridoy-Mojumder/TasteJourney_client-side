@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 
 const ViewDetails = () => {
@@ -7,6 +8,11 @@ const ViewDetails = () => {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white shadow-lg rounded-lg overflow-hidden p-8 m-8 ">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>View Details Page</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <img className="w-full h-auto rounded-lg object-cover" src={food_image} alt={food_name} />
 
             <div className="flex flex-col justify-center">

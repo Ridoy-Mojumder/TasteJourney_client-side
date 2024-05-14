@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
     const defaultOptions = {
@@ -88,6 +89,11 @@ const Login = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center px-4 py-8 mx-8">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Login</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <div className='flex min-h-screen w-full flex-col bg-[#edf7f8] md:flex-row items-center md:space-x-12  p-8 rounded-2xl shadow-2xl  justify-center'>
                 <div className="mb-6 md:mb-0 flex-shrink-0">
                     <Lottie options={defaultOptions} height={500} width={550} />

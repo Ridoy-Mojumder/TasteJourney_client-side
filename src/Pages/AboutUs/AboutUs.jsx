@@ -1,8 +1,14 @@
+import { Helmet } from "react-helmet";
 import { NavLink } from "react-router-dom";
 
 const AboutUs = () => {
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>About Us</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <div className="carousel-item relative w-full mb-16">
                 <div className="relative w-full">
                     <img src="https://i.ibb.co/YcHk0yf/man-mechanic-working-with-screwdriver-repair-motorcycle-detail-151013-39125.jpg" className="w-full h-60 object-cover" />

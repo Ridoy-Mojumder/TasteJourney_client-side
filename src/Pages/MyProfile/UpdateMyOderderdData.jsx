@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -41,6 +42,11 @@ const UpdateMyOrderedData = () => {
 
     return (
         <div className="p-20 flex justify-center items-center">
+             <Helmet>
+                <meta charSet="utf-8" />
+                <title>Update my Order</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <form onSubmit={handleSubmit} className="p-4 w-1/2 border-2 border-orange-700 shadow-xl">
                 <h2 className="text-3xl font-bold p-4">Update Order</h2>
                 <div>
@@ -51,6 +57,7 @@ const UpdateMyOrderedData = () => {
                         name="food_name"
                         defaultValue={food_name}
                         className="w-full p-2 border rounded-lg"
+                        readOnly
                     />
                 </div>
                 <div>
@@ -61,6 +68,7 @@ const UpdateMyOrderedData = () => {
                         name="food_image"
                         defaultValue={food_image}
                         className="w-full p-2 border rounded-lg"
+                        readOnly
                     />
                 </div>
                 <div>
@@ -81,6 +89,7 @@ const UpdateMyOrderedData = () => {
                         name="price"
                         defaultValue={price}
                         className="w-full p-2 border rounded-lg"
+                        readOnly
                     />
                 </div>
                 <div className="flex justify-center items-center py-5">

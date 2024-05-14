@@ -64,7 +64,7 @@ const PurchasePage = () => {
         <>
            <Helmet>
                 <meta charSet="utf-8" />
-                <title>About Us</title>
+                <title>Purchase Food</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <div className="md:flex justify-around items-center md:p-20 bg-gray-100 min-h-screen">

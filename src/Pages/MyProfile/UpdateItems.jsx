@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const UpdateItems = () => {
     const { user } = useContext(AuthContext);
@@ -47,32 +48,43 @@ const UpdateItems = () => {
             },
             body: JSON.stringify(foodData)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.modifiedCount > 0) {
-                navigate('/myProfile')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    navigate('/myProfile')
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Food Item Updated Successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error updating food item:', error);
                 Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Food Item Updated Successfully",
-                    showConfirmButton: false,
-                    timer: 1500
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong! Please try again.',
                 });
-            }
-        })
-        .catch(error => {
-            console.error('Error updating food item:', error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong! Please try again.',
             });
-        });
     };
     return (
-        <div className="max-w-4xl mx-auto p-5">
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="max-w-4xl mx-auto p-5 bg-white rounded-lg shadow-lg m-5">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Update Item</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
+            <form onSubmit={handleSubmit} className="space-y-6">
+                <h1 className="text-2xl md:text-5xl font-bold text-[#52c9af] my-10 text-center relative">
+                    <span className="absolute left-0 top-1/2 transform -translate-y-1/2 w-16 h-1 bg-[#52c9af]"></span>
+                    Edit Food Item
+                    <span className="absolute right-0 top-1/2 transform -translate-y-1/2 w-16 h-1 bg-[#52c9af]"></span>
+                </h1>
+
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Food Name</label>
                     <input
@@ -80,7 +92,7 @@ const UpdateItems = () => {
                         name="food_name"
                         value={foodData.food_name}
                         onChange={handleChange}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
                 </div>
@@ -92,7 +104,7 @@ const UpdateItems = () => {
                         name="food_image"
                         value={foodData.food_image}
                         onChange={handleChange}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                     />
                 </div>
 
@@ -103,7 +115,7 @@ const UpdateItems = () => {
                         name="food_category"
                         value={foodData.food_category}
                         onChange={handleChange}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
                 </div>
@@ -115,7 +127,7 @@ const UpdateItems = () => {
                         name="quantity"
                         value={foodData.quantity}
                         onChange={handleChange}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
                 </div>
@@ -127,7 +139,7 @@ const UpdateItems = () => {
                         name="price"
                         value={foodData.price}
                         onChange={handleChange}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
                 </div>
@@ -139,9 +151,10 @@ const UpdateItems = () => {
                         name="name"
                         value={user.displayName}
                         readOnly
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 bg-gray-100 rounded-md shadow-sm focus:outline-none sm:text-sm"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 bg-gray-200 rounded-md shadow-sm cursor-not-allowed"
                     />
                 </div>
+
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Email</label>
                     <input
@@ -149,7 +162,7 @@ const UpdateItems = () => {
                         name="email"
                         value={user.email}
                         readOnly
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 bg-gray-100 rounded-md shadow-sm focus:outline-none sm:text-sm"
+                        className="mt-1 block w-full px-4 py-2 border border-gray-300 bg-gray-200 rounded-md shadow-sm cursor-not-allowed"
                     />
                 </div>
 
@@ -160,7 +173,7 @@ const UpdateItems = () => {
                         name="food_origin"
                         value={foodData.food_origin}
                         onChange={handleChange}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         required
                     />
                 </div>
@@ -171,8 +184,8 @@ const UpdateItems = () => {
                         name="description"
                         value={foodData.description}
                         onChange={handleChange}
-                        rows="3"
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        rows="4"
+                        className="mt-1 block w-full px-4 py-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Short description about the food..."
                         required
                     ></textarea>
@@ -180,12 +193,13 @@ const UpdateItems = () => {
 
                 <button
                     type="submit"
-                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="w-full inline-flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
                     Update Item
                 </button>
             </form>
         </div>
+
     );
 };
 
