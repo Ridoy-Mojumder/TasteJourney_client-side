@@ -23,20 +23,11 @@ const AboutUs = () => {
                 </div>
             </div>
             <div className="px-4 md:px-8 lg:px-16">
-
-
-                <h1 className="text-5xl font-semibold text-[#52c9af] my-10 text-center font-dancing relative">
-                    You can know us
-                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-px w-40  bg-[#52c9af]"></span>
-                </h1>
-
-
-                <div className="grid grid-cols-1 md:grid-cols-2 my-6 md:my-10 lg:my-20 border p-8" >
+                <div className="grid grid-cols-1 md:grid-cols-2 my-6 md:my-10 lg:my-20 border p-8">
                     <div className="flex justify-center items-center">
                         <img src="https://i.ibb.co/02F9VtT/restaurant-with-painting-wall-that-says-fish-it-853177-1321.jpg" alt="" className="w-2/3 rounded-lg shadow-lg rounded-t-full" />
                     </div>
                     <div className="flex flex-col justify-center">
-
                         <h1 className="text-5xl font-semibold text-[#52c9af] my-10 text-center font-dancing relative">
                             <span>
                                 <span className="block md:inline">Our</span>
@@ -70,7 +61,7 @@ const AboutUs = () => {
                     <div className="flex justify-center items-center">
                         <div className="relative">
                             <img src="https://i.ibb.co/k4f3RD3/restaurant-interior-1127-3394.jpg" className="relative md:h-[600px]  sm:h-[500px] h-[300px]  w-[500px] bg-gray-400 rounded-b-full object-cover" alt="hero navigate ui" />
-                        </div>
+                            </div>
                     </div>
                     <div className="flex flex-col justify-center">
                         <h1 className="text-5xl font-semibold text-[#52c9af] my-10 text-center font-dancing relative">
@@ -84,9 +75,9 @@ const AboutUs = () => {
                     </div>
                 </div>
             </div>
-
         </>
     );
 };
 
 export default AboutUs;
+                     
