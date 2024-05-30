@@ -5,13 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && cp dist/index.html dist/200.html",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/nunito": "^5.0.18",
+    "@fontsource/poppins": "^5.0.14",
     "animate.css": "^4.1.1",
-    "axios": "^1.6.8",
+    "axios": "^1.7.2",
     "firebase": "^10.11.1",
     "helmet": "^7.1.0",
     "localforage": "^1.10.0",

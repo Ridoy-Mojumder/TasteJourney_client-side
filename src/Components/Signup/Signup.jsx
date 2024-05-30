@@ -71,7 +71,7 @@ const Signup = () => {
                 })
                     .then(() => {
                         Swal.fire("Registration Successfully");
-                        console.log("profile updated")
+                        // console.log("profile updated")
                     })
                     .catch(error => {
                         console.log(error);

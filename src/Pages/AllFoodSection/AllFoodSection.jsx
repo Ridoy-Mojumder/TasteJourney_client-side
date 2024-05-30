@@ -9,7 +9,7 @@ const AllFoodSection = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/TasteJourneyAllFood`)
+        fetch(`https://taste-journey-server-side.vercel.app/TasteJourneyAllFood`)
             .then(res => res.json())
             .then(data => {
                 // Sort the data by orderCount in descending order

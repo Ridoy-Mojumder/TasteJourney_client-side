@@ -17,9 +17,9 @@ const UpdateMyOrderedData = () => {
         const price = form.price.value;
         const quantity = form.quantity.value;
         const newOrderedData = { food_image, food_name, price,quantity }
-        console.log(newOrderedData)
+        // console.log(newOrderedData)
 
-        fetch(`http://localhost:5000/purchase/${_id}`, {
+        fetch(`https://taste-journey-server-side.vercel.app/purchase/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -28,7 +28,7 @@ const UpdateMyOrderedData = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Update Successfully!",

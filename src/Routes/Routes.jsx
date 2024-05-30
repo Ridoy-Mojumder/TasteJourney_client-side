@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import PurchesPage from "../Pages/PurchesPage/PurchesPage";
 import UpdateItems from "../Pages/MyProfile/UpdateItems";
 import UpdateMyOrderedData from "../Pages/MyProfile/UpdateMyOderderdData";
+import ChatPage from "../Pages/ChatPage/ChatPage";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
           element: <AboutUs />,
         },
         {
+          path: "/chatPage",
+          element: <ChatPage />,
+        },
+        {
           path: "/myProfile",
           element: <PrivateRoute><MyProfile /></PrivateRoute>,
         },
@@ -56,22 +61,22 @@ export const router = createBrowserRouter([
         {
           path: "/purchesPage/:id",
           element: <PrivateRoute><PurchesPage /></PrivateRoute>,
-          loader:  ({ params }) => fetch(`http://localhost:5000/TasteJourneyAllFood/${params.id}`)
+          loader:  ({ params }) => fetch(`https://taste-journey-server-side.vercel.app/TasteJourneyAllFood/${params.id}`)
         },
         {
           path: "/viewDetails/:id",
           element: <ViewDetails />,
-          loader:  ({ params }) => fetch(`http://localhost:5000/TasteJourneyAllFood/${params.id}`)
+          loader:  ({ params }) => fetch(`https://taste-journey-server-side.vercel.app/TasteJourneyAllFood/${params.id}`)
         },
         {
           path: "/updateItems/:id",
           element: <UpdateItems />,
-          loader:  ({ params }) => fetch(`http://localhost:5000/TasteJourneyAllFood/${params.id}`)
+          loader:  ({ params }) => fetch(`https://taste-journey-server-side.vercel.app/TasteJourneyAllFood/${params.id}`)
         },
         {
           path: '/updateMyOrderItems/:id',
           element:<UpdateMyOrderedData/>,
-          loader: ({ params }) => fetch(`http://localhost:5000/purchase/${params.id}`)
+          loader: ({ params }) => fetch(`https://taste-journey-server-side.vercel.app/purchase/${params.id}`)
         }
       ],
     },

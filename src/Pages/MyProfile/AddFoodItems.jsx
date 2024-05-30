@@ -41,10 +41,10 @@ const AddFoodItems = () => {
         const food_origin = foodData.food_origin;
         const description = foodData.description;
         const newArtAndCraft = { food_name, food_image, food_category, quantity, price, "added_by": { "name": name, "email": email }, food_origin, description }
-        console.log(newArtAndCraft)
+        // console.log(newArtAndCraft)
 
 
-        fetch('http://localhost:5000/TasteJourneyAllFood/', {
+        fetch('https://taste-journey-server-side.vercel.app/TasteJourneyAllFood/', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -53,7 +53,7 @@ const AddFoodItems = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.insertedId) {
                     Swal.fire({
                         position: "top-end",

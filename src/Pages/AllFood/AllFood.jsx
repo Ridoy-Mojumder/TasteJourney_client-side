@@ -8,9 +8,11 @@ const AllFood = () => {
     const [allFoods, setAllFoods] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
+    const [minPrice, setMinPrice] = useState("");
+    const [maxPrice, setMaxPrice] = useState("");
 
     useEffect(() => {
-        fetch(`http://localhost:5000/TasteJourneyAllFood`)
+        fetch(`https://taste-journey-server-side.vercel.app/TasteJourneyAllFood`)
             .then(res => res.json())
             .then(data => {
                 setAllFoods(data);
@@ -26,7 +28,23 @@ const AllFood = () => {
         setSearchQuery(e.target.value);
     };
 
-    const filteredFoods = allFoods.filter(food => food.food_name.toLowerCase().includes(searchQuery.toLowerCase()));
+    // const filteredFoods = allFoods.filter(food => food.food_name.toLowerCase().includes(searchQuery.toLowerCase()));
+
+
+
+    const handleMinPriceChange = (e) => {
+        setMinPrice(e.target.value);
+    };
+
+    const handleMaxPriceChange = (e) => {
+        setMaxPrice(e.target.value);
+    };
+
+    const filteredFoods = allFoods.filter(food => 
+        food.food_name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+        (minPrice === "" || parseInt(food.price) >= parseInt(minPrice)) &&
+        (maxPrice === "" || parseInt(food.price) <= parseInt(maxPrice))
+    );
 
     return (
         <div>
@@ -47,6 +65,32 @@ const AllFood = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+
+
+            <div className="flex flex-col md:flex-row items-center justify-center md:justify-end m-8 space-y-4 md:space-y-0 md:space-x-4">
+                <label htmlFor="minPrice" className="text-gray-700 font-semibold">
+                    Min Price:
+                </label>
+                <input
+                    type="number"
+                    id="minPrice"
+                    placeholder="Min Price"
+                    value={minPrice}
+                    onChange={handleMinPriceChange}
+                    className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#52c9af] focus:ring-1 focus:ring-[#52c9af] w-full md:w-40 transition-all duration-300"
+                />
+                <label htmlFor="maxPrice" className="text-gray-700 font-semibold">
+                    Max Price:
+                </label>
+                <input
+                    type="number"
+                    id="maxPrice"
+                    placeholder="Max Price"
+                    value={maxPrice}
+                    onChange={handleMaxPriceChange}
+                    className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#52c9af] focus:ring-1 focus:ring-[#52c9af] w-full md:w-40 transition-all duration-300"
+                />
             </div>
 
 

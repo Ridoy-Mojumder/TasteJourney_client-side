@@ -41,7 +41,7 @@ const UpdateItems = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:5000/TasteJourneyAllFood/${loadedData._id}`, {
+        fetch(`https://taste-journey-server-side.vercel.app/TasteJourneyAllFood/${loadedData._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ const UpdateItems = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount > 0) {
                     navigate('/myProfile')
                     Swal.fire({

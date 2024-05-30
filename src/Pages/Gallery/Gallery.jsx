@@ -19,10 +19,10 @@ const Gallery = () => {
         const name = form.name.value;
         const email = form.email.value;
         const newFeedback = { feedback, photoURL, name, email }
-        console.log(newFeedback)
+        // console.log(newFeedback)
 
 
-        fetch('http://localhost:5000/GalleryData', {
+        fetch('https://taste-journey-server-side.vercel.app/GalleryData', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -31,7 +31,7 @@ const Gallery = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.insertedId) {
                     Swal.fire({
                         position: "top-end",
@@ -47,7 +47,7 @@ const Gallery = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/GalleryData`, { credentials: 'include' })
+        fetch(`https://taste-journey-server-side.vercel.app/GalleryData`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 setGalleryAllData(data);

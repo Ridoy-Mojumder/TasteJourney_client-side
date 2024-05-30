@@ -10,7 +10,7 @@ const MyAddedItems = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/TasteJourneyAllFood/`)
+        fetch(`https://taste-journey-server-side.vercel.app/TasteJourneyAllFood/`)
             .then(res => {
                 if (!res.ok) {
                     throw new Error('Failed to fetch data');
@@ -39,7 +39,7 @@ const MyAddedItems = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/TasteJourneyAllFood/${_id}`, {
+                fetch(`https://taste-journey-server-side.vercel.app/TasteJourneyAllFood/${_id}`, {
                     method: 'DELETE',
                 })
                     .then(res => {

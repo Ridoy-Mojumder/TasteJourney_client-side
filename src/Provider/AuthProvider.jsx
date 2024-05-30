@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
 
 
     const createUser = (email, password) => {
-        console.log(email, password)
+        // console.log(email, password)
         setIsSignIn(false)
         setLoadingState(true)
         return createUserWithEmailAndPassword(auth, email, password);
@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
-        setLoadingState(true);
+        setLoadingState(false);
         setIsSignIn(false)
         return signOut(auth);
     }
@@ -61,18 +61,18 @@ const AuthProvider = ({ children }) => {
     
             // If currentUser exists, send a POST request to generate JWT
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt', loggedUserEmail, { withCredentials: true })
-                    .then(res => {
-                        console.log('Token response:', res.data);
+                axios.post('https://taste-journey-server-side.vercel.app/jwt', loggedUserEmail, { withCredentials: true })
+                    .then(() => {
+                        // console.log('Token response:', res.data);
                     })
                     .catch(error => {
                         console.error('Error generating JWT:', error);
                     });
             } else {
                 // If currentUser doesn't exist, send a POST request to logout
-                axios.post('http://localhost:5000/logout', loggedUserEmail, { withCredentials: true })
-                    .then(res => {
-                        console.log('Logout response:', res.data);
+                axios.post('https://taste-journey-server-side.vercel.app/logout', loggedUserEmail, { withCredentials: true })
+                    .then(() => {
+                        // console.log('Logout response:', res.data);
                     })
                     .catch(error => {
                         console.error('Error logging out:', error);

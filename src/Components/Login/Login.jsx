@@ -32,7 +32,7 @@ const Login = () => {
     });
 
 
-    const { signIn, signInWithGoogle } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState('');
     const [password, setPassword] = useState(false);
@@ -40,6 +40,8 @@ const Login = () => {
     const [passwordShow, setPasswordShow] = useState(false);
     const location = useLocation()
     const { user } = useContext(AuthContext)
+
+    // console.log(location)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -62,9 +64,9 @@ const Login = () => {
             .then(() => {
                 Swal.fire("LogIn Successfully");
                 setFormData({ email: '', password: '' });
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                axios.post('https://taste-journey-server-side.vercel.app/jwt', user, { withCredentials: true })
                     .then(res => {
-                        console.log(res.data);
+                        // console.log(res.data);
                         if (res.data.success) {
                             navigate(location?.state ? location?.state : "/");
                         }
@@ -88,13 +90,26 @@ const Login = () => {
         signInWithGoogle()
             .then(result => {
                 Swal.fire("LogIn Successfully");
-                console.log(result.user)
+                // console.log(result.user)
                 navigate("/");
             })
             .catch(error => {
                 console.error(error);
             })
     }
+
+    const handleGithubSignIn = () => {
+        signInWithGithub()
+            .then(result => {
+                Swal.fire("LogIn Successfully");
+                // console.log(result.user)
+                navigate("/");
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
 
     return (
         <div className="min-h-screen flex items-center justify-center px-4 py-8 mx-8">
@@ -154,7 +169,7 @@ const Login = () => {
                             <Lottie options={defaultOptions2} height={50} width={55} />
                             Google Login
                         </button>
-                        <button className="bg-gray-900 text-white text-xl p-4 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors">
+                        <button className="bg-gray-900 text-white text-xl p-4 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors" onClick={handleGithubSignIn}>
                             <FaGithub />
                             GitHub Login
                         </button>

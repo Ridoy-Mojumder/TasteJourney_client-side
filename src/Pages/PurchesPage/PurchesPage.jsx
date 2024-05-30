@@ -61,7 +61,7 @@ const PurchasePage = () => {
             return; // Stop execution
         }
     
-        fetch(`http://localhost:5000/purchase/${_id}`, {
+        fetch(`https://taste-journey-server-side.vercel.app/purchase/${_id}`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -70,7 +70,7 @@ const PurchasePage = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.insertedId) {
                     Swal.fire({
                         position: "top-end",

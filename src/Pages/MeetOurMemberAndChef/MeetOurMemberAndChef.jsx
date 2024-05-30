@@ -7,7 +7,7 @@ const MeetOurMemberAndChef = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/teamMember`)
+        fetch(`https://taste-journey-server-side.vercel.app/teamMember`)
             .then(res => res.json())
             .then(data => {
                 setTeamMember(data);

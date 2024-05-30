@@ -4,6 +4,8 @@ import animationData from "./logo2.json";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import './Navbar.css'
+import { IoMdNotifications } from "react-icons/io";
+
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -40,8 +42,19 @@ const Navbar = () => {
                     <span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-[#278f7d] transition-all duration-300 group-hover:w-full"></span>
                 </NavLink>
             }
+            {
+                user &&
+                <NavLink to="/chatPage" className="group flex cursor-pointer flex-col">
+                    <span className="flex font-bold text-[#45bfca]">Chat</span>{" "}
+                    <span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-[#278f7d] transition-all duration-300 group-hover:w-full"></span>
+                </NavLink>
+            }
             <NavLink to="/aboutUs" className="group flex cursor-pointer flex-col">
                 <span className="flex font-bold text-[#45bfca]">AboutUs</span>{" "}
+                <span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-[#278f7d] transition-all duration-300 group-hover:w-full"></span>
+            </NavLink>
+            <NavLink to="/notification" className="group flex cursor-pointer flex-col">
+                <span className="flex font-bold text-[#45bfca]"><IoMdNotifications /></span>{" "}
                 <span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-[#278f7d] transition-all duration-300 group-hover:w-full"></span>
             </NavLink>
         </>

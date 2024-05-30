@@ -10,7 +10,7 @@ const MyOrderdItems = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/purchase`)
+        fetch(`https://taste-journey-server-side.vercel.app/purchase`)
             .then(res => {
                 if (!res.ok) {
                     throw new Error('Failed to fetch data');
@@ -45,12 +45,12 @@ const MyOrderdItems = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/purchase/${_id}`, {
+                fetch(`https://taste-journey-server-side.vercel.app/purchase/${_id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
